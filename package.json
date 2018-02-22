@@ -1,0 +1,33 @@
+{
+	"name": "nodejs-playground",
+	"description": "NodeJS learning code samples",
+	"version": "0.0.1",
+	"scripts": {
+		"start": "node app"
+	},
+	"author": {
+		"name": "Cenk SARI",
+		"url": "http://www.cenksari.com"
+	},
+	"dependencies": {
+		"base-64": "^0.1.0",
+		"crypto": "^1.0.1",
+		"documentdb": "^1.14.2",
+		"express": "^4.16.2",
+		"express-session": "^1.15.6",
+		"fs": "0.0.1-security",
+		"http": "0.0.0",
+		"nodemailer": "^4.5.0",
+		"querystring": "^0.2.0",
+		"tedious": "^2.3.1",
+		"url": "^0.11.0",
+		"utf8": "^3.0.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cenksari/nodejs-playground"
+	},
+	"engines": {
+		"node": "9.5.0"
+	}
+}
