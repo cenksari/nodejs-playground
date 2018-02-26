@@ -1,63 +1,61 @@
-const Connection = require("tedious").Connection;
-const Request = require("tedious").Request;
-const TYPES = require("tedious").TYPES;
+const TConnection = require('tedious').Connection;
+const TRequest = require('tedious').Request;
+const TTYPES = require('tedious').TYPES;
 
 const config = {
-    userName: "cenk",
-    password: "p@assword",
-    server: "CENKSARI",
-    options: {
-        database: "nodejsdatabase",
-        encrypt: false // Set true if you're on Azure
-    }
+  userName: 'cenk',
+  password: 'p@assword!',
+  server: 'CENKSARI',
+  options: {
+    database: 'nodejsdatabase',
+    encrypt: false, // Set true if you're on Azure
+  },
 };
 
-const connection = new Connection(config);
+const connection = new TConnection(config);
 
-connection.on('connect', function(err) {
+function executeStatement() {
+  const request = new TRequest('SELECT * FROM users WHERE id=@id;', ((err) => {
     if (err) {
-        console.log(err);
+      console.log(err);
     }
-    else {
-        console.log("connected");
+  }));
+  request.addParameter('id', TTYPES.Int, 1);
 
-        executeStatement();
-    }
-});
+  let result = '';
 
-executeStatement = () => {
-    request = new Request("SELECT * FROM users WHERE id=@id;", function(err) {
-        if (err) {
-            console.log(err);
-        }
+  request.on('row', (columns) => {
+    columns.forEach((column) => {
+      if (column.value === null) {
+        console.log('NULL');
+      } else {
+        result += `${column.value} `;
+      }
     });
-    request.addParameter('id', TYPES.Int, 1);
+    console.log(result);
 
-    let result = "";
+    result = '';
+  });
 
-    request.on('row', function(columns) {
-        columns.forEach(function(column) {
-            if (column.value === null) {
-                console.log("NULL");
-            }
-            else {
-                result += column.value + " ";
-            }
-        });
-        console.log(result);
+  request.on('doneInProc', (rowCount) => {
+    console.log(`${rowCount} row(s) returned`);
+  });
 
-        result = "";
-    });
+  request.on('requestCompleted', () => {
+    connection.close();
 
-    request.on('doneInProc', function(rowCount, more) {
-        console.log(rowCount + ' row(s) returned');
-    });
+    console.log('request completed. connection closed.');
+  });
 
-    request.on('requestCompleted', function() {
-        connection.close();
-
-        console.log("request completed. connection closed.");
-    });
-
-    connection.execSql(request);
+  connection.execSql(request);
 }
+
+connection.on('connect', (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log('connected');
+
+    executeStatement();
+  }
+});

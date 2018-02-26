@@ -1,9 +1,7 @@
 const array = [
-    'John', 'Jack', 'Jordan', 'Mike'
+  'John', 'Jack', 'Jordan', 'Mike',
 ];
 
-const result = array.map(function(name) {
-    return name.toUpperCase();
-});
+const result = array.map(name => name.toUpperCase());
 
 console.log(result);

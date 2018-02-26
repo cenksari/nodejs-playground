@@ -1,8 +1,8 @@
 module.exports = {
-    test1: function() {
-        return 'test1 function';
-    },
-    test2: function(param) {
-        return `test2 function : param = ${param}`;
-    }
+  test1() {
+    return 'test1 method';
+  },
+  test2(param) {
+    return `test2 method : param = ${param}`;
+  },
 };

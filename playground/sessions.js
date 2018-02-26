@@ -1,40 +1,40 @@
-const express = require("express");
+const express = require('express');
+
 const app = express();
-const session = require("express-session");
+const session = require('express-session');
 
 app.use(session({
-    secret: "cenk-session-secret",
-    resave: false,
-    saveUninitialized: true
+  secret: 'cenk-session-secret',
+  resave: false,
+  saveUninitialized: true,
 }));
 
 app.get('/', (req, res) => {
-    const name = "Cenk SARI";
+  const name = 'Cenk SARI';
 
-    req.session.name = name;
+  req.session.name = name;
 
-    res.send('Session generated');
+  res.send('Session generated');
 });
 
 app.get('/readsession', (req, res) => {
-    if (req.session.name) return res.send(req.session.name);
+  if (req.session.name) res.send(req.session.name);
 
-    res.send("Session not found");
+  res.send('Session not found');
 });
 
 app.get('/destroysession', (req, res) => {
-    if (req.session.name) {
-        req.session.destroy();
+  if (req.session.name) {
+    req.session.destroy();
 
-        res.send("Session destroyed");
-    }
-    else {
-        res.send("Session not found");
-    }
+    res.send('Session destroyed');
+  } else {
+    res.send('Session not found');
+  }
 
-    res.end();
+  res.end();
 });
 
-app.listen(8000, function() {
-    console.log("Server started!");
+app.listen(8000, () => {
+  console.log('Server started!');
 });

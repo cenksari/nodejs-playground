@@ -1,27 +1,27 @@
 class Person {
-    constructor(name) {
-        this.name = name;
-    }
+  constructor(name) {
+    this.name = name;
+  }
 
-    getName() {
-        return this.name;
-    }
+  getName() {
+    return this.name;
+  }
 }
 
 class ExamplePerson extends Person {
-    constructor(name, lastName) {
-        super(name);
+  constructor(name, lastName) {
+    super(name);
 
-        this.lastName = lastName;
-    }
+    this.lastName = lastName;
+  }
 
-    getLastName() {
-        return this.lastName;
-    }
+  getLastName() {
+    return this.lastName;
+  }
 
-    getFullName() {
-        return `${this.getName()} ${this.getLastName()}`;
-    }
+  getFullName() {
+    return `${this.getName()} ${this.getLastName()}`;
+  }
 }
 
 const person = new ExamplePerson('Cenk', 'SARI');
