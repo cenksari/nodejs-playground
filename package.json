@@ -10,16 +10,16 @@
 		"url": "http://www.cenksari.com"
 	},
 	"dependencies": {
-		"base-64": "^0.1.0",
+		"base-64": "^1.0.0",
 		"crypto": "^1.0.1",
-		"documentdb": "^1.14.2",
-		"express": "^4.16.2",
-		"express-session": "^1.15.6",
+		"documentdb": "^1.15.3",
+		"express": "^4.17.1",
+		"express-session": "^1.17.1",
 		"fs": "0.0.1-security",
-		"http": "0.0.0",
-		"nodemailer": "^4.5.0",
-		"querystring": "^0.2.0",
-		"tedious": "^2.3.1",
+		"http": "^0.0.1-security",
+		"nodemailer": "^6.5.0",
+		"querystring": "^0.2.1",
+		"tedious": "^11.0.6",
 		"url": "^0.11.0",
 		"utf8": "^3.0.0"
 	},
@@ -28,10 +28,10 @@
 		"url": "https://github.com/cenksari/nodejs-playground"
 	},
 	"engines": {
-		"node": "9.5.0"
+		"node": "15.12.0"
 	},
 	"devDependencies": {
-		"eslint-config-airbnb-base": "^12.1.0",
-		"eslint-plugin-import": "^2.9.0"
+		"eslint-config-airbnb-base": "^14.2.1",
+		"eslint-plugin-import": "^2.22.1"
 	}
 }
